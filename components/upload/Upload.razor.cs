@@ -49,6 +49,15 @@ namespace AntDesign
         public bool Multiple { get; set; }
 
         [Parameter]
+        public string ListType { get; set; } = "text";
+
+        [Parameter]
+        public bool Directory { get; set; }
+
+        [Parameter]
+        public bool Multiple { get; set; }
+
+        [Parameter]
         public string Accept { get; set; }
 
         [Parameter]
@@ -157,7 +166,7 @@ namespace AntDesign
                 await JSRuntime.InvokeVoidAsync(JSInteropConstants.uploadFile, _file, index, Data, Headers, id, Action, Name, _currentInstance, "UploadChanged", "UploadSuccess", "UploadError");
                 index++;
             }
-
+            
             await JSRuntime.InvokeVoidAsync(JSInteropConstants.clearFile, _file);
         }
 
