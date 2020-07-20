@@ -56,7 +56,6 @@ export function clearFile(element) {
 
 export function getFileInfo(element) {
   if (element.files && element.files.length > 0) {
-    
     var fileInfo = [];
     for (var i = 0; i < element.files.length; i++) {
       var file = element.files[i];
@@ -68,7 +67,7 @@ export function getFileInfo(element) {
         type: file.type
       });
     }
-    
+
     return fileInfo;
   }
 }
