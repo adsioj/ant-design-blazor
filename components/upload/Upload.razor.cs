@@ -122,18 +122,6 @@ namespace AntDesign
             {
                 await JSRuntime.InvokeVoidAsync(JSInteropConstants.addFileClickEventListener, _btn);
             }
-            if (_disabledChanged)
-            {
-                if (Disabled)
-                {
-                    await JSRuntime.InvokeVoidAsync(JSInteropConstants.removeFileClickEventListener, _btn);
-                }
-                else
-                {
-                    await JSRuntime.InvokeVoidAsync(JSInteropConstants.addFileClickEventListener, _btn);
-                }
-                _disabledChanged = false;
-            }
             await base.OnAfterRenderAsync(firstRender);
         }
 
@@ -166,7 +154,7 @@ namespace AntDesign
                 await JSRuntime.InvokeVoidAsync(JSInteropConstants.uploadFile, _file, index, Data, Headers, id, Action, Name, _currentInstance, "UploadChanged", "UploadSuccess", "UploadError");
                 index++;
             }
-            
+
             await JSRuntime.InvokeVoidAsync(JSInteropConstants.clearFile, _file);
         }
 
