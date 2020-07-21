@@ -49,15 +49,6 @@ namespace AntDesign
         public bool Multiple { get; set; }
 
         [Parameter]
-        public string ListType { get; set; } = "text";
-
-        [Parameter]
-        public bool Directory { get; set; }
-
-        [Parameter]
-        public bool Multiple { get; set; }
-
-        [Parameter]
         public string Accept { get; set; }
 
         [Parameter]
@@ -121,6 +112,18 @@ namespace AntDesign
             if (firstRender && !Disabled)
             {
                 await JSRuntime.InvokeVoidAsync(JSInteropConstants.addFileClickEventListener, _btn);
+            }
+            if (_disabledChanged)
+            {
+                if (Disabled)
+                {
+                    await JSRuntime.InvokeVoidAsync(JSInteropConstants.removeFileClickEventListener, _btn);
+                }
+                else
+                {
+                    await JSRuntime.InvokeVoidAsync(JSInteropConstants.addFileClickEventListener, _btn);
+                }
+                _disabledChanged = false;
             }
             await base.OnAfterRenderAsync(firstRender);
         }
