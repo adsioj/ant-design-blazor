@@ -73,9 +73,6 @@ namespace AntDesign
         public EventCallback<UploadInfo> OnChange { get; set; }
 
         [Parameter]
-        public Func<UploadFileItem, Task<bool>> OnRemove { get; set; }
-
-        [Parameter]
         public EventCallback<UploadFileItem> OnPreview { get; set; }
 
         [Parameter]
@@ -98,6 +95,8 @@ namespace AntDesign
         private ElementReference _btn;
 
         private string _fileId = Guid.NewGuid().ToString();
+
+        
 
         protected override Task OnInitializedAsync()
         {
